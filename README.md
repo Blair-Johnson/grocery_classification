@@ -35,6 +35,10 @@ python3 train.py "${YOUR_PATH}/Grocery-Product-Classification" "${YOUR_PATH}/Gro
 ```
 python3 train.py -h
 ```
+6. To monitor training progress and view statistics, launch Tensorboard in another terminal window:
+```
+tensorboard --logdir ${REPO_LOCATION}/grocery_classification/logs
+```
 
 ### Conversion
 Run ```convert_savedmodel.py``` to convert the most recent training checkpoint to the TensorFlow ```saved_model``` format. As-is this will overwrite ```models/saved_models/MobileNetV3```. This can easily be changed via the script.
