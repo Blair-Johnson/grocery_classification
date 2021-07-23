@@ -1,6 +1,6 @@
 
 
-def simplify_labels_remap(path : str, query_label : str) -> (str, str):
+def simplify_labels(path : str, query_label : str) -> (str, str):
     """Tensorflow data API transform for combining and simplifying labels
         Arguments
             path : str
@@ -9,7 +9,7 @@ def simplify_labels_remap(path : str, query_label : str) -> (str, str):
                 Original un-filtered label for a the image at the path
                 specified
     """
-    yogurt_map = set('alpro-blueberry-soyghurt',
+    yogurt_map = {'alpro-blueberry-soyghurt',
                       'alpro-vanilla-soyghurt',
                       'arla-mild-vanilla-yoghurt',
                       'arla-natural-mild-low-fat-yoghurt',
@@ -19,9 +19,9 @@ def simplify_labels_remap(path : str, query_label : str) -> (str, str):
                       'yoggi-strawberry-yoghurt',
                       'yoggi-vanilla-yoghurt',
                       'soyghurt',
-                      'yoghurt')
+                      'yoghurt'}
 
-    milk_map = set('alpro-fresh-soy-milk',
+    milk_map = {'alpro-fresh-soy-milk',
                    'alpro-shelf-soy-milk',
                    'arla-ecological-medium-fat-milk',
                    'arla-lactose-medium-fat-milk',
@@ -34,13 +34,13 @@ def simplify_labels_remap(path : str, query_label : str) -> (str, str):
                    'milk',
                    'oatly-oat-milk',
                    'sour-milk',
-                   'soy-milk')
+                   'soy-milk'}
 
-    sour_cream_map = set('arla-ecological-sour-cream',
+    sour_cream_map = {'arla-ecological-sour-cream',
                         'arla-sour-cream',
-                        'sour-cream')
+                        'sour-cream'}
 
-    fruit_juice_map = set('bravo-apple-juice',
+    fruit_juice_map = {'bravo-apple-juice',
                           'bravo-orange-juice',
                           'god-morgon-apple-juice',
                           'god-morgon-orange-juice',
@@ -50,51 +50,51 @@ def simplify_labels_remap(path : str, query_label : str) -> (str, str):
                           'tropicana-juice-smooth',
                           'tropicana-golden-grapefruit',
                           'tropicana-mandarin-morning',
-                          'juice')
+                          'juice'}
 
-    apple_map = set('apple',
+    apple_map = {'apple',
                     'golden-delicious',
                     'granny-smith',
                     'red-delicious',
                     'royal-gala',
-                    'pink-lady')
+                    'pink-lady'}
 
-    melon_map = set('cantaloupe',
+    melon_map = {'cantaloupe',
                     'galia-melon',
                     'honeydew-melon',
                     'melon',
-                    'watermelon')
+                    'watermelon'}
 
-    pear_map = set('anjou',
+    pear_map = {'anjou',
                    'kaiser',
                    'pear',
-                   'conference')
+                   'conference'}
 
-    pepper_map = set('green-bell-pepper',
+    pepper_map = {'green-bell-pepper',
                      'orange-bell-pepper',
                      'red-bell-pepper',
                      'yellow-bell-pepper',
-                     'pepper')
+                     'pepper'}
 
-    tomato_map = set('regular-tomato',
+    tomato_map = {'regular-tomato',
                      'tomato',
                      'vine-tomato',
-                     'beef-tomato')
+                     'beef-tomato'}
 
-    orange_map = set('nectarine',
+    orange_map = {'nectarine',
                      'orange',
-                     'satsumas')
+                     'satsumas'}
 
-    potato_map = set('floury-potato',
+    potato_map = {'floury-potato',
                      'potato',
                      'solid-potato',
-                     'sweet-potato')
+                     'sweet-potato'}
 
-    onion_map = set('onion',
-                    'yellow-onion')
+    onion_map = {'onion',
+                    'yellow-onion'}
 
-    mushroom_map = set('brown-cap-mushroom',
-                       'mushroom')
+    mushroom_map = {'brown-cap-mushroom',
+                       'mushroom'}
 
     mappings = [(yogurt_map, 'yogurt'),
                 (milk_map, 'milk'),
