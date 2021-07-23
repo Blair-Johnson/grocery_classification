@@ -1,4 +1,4 @@
-
+import tensorflow as tf
 
 def simplify_labels(path : str, query_label : str) -> (str, str):
     """Tensorflow data API transform for combining and simplifying labels
@@ -116,4 +116,29 @@ def simplify_labels(path : str, query_label : str) -> (str, str):
         else:
             continue
     return path, query_label
+
+def one_hot_labels(labels):
+    index_mapping = dict(zip(sorted(list(set(labels))), 
+                        list(range(len(set(labels))))))
+    labels = [index_mapping[label] for label in labels] 
+    return [tf.one_hot(indices = [value], depth = 60)[0] for 
+                    value in labels], index_mapping
+
+def base_map(path, label):
+    image = tf.io.decode_jpeg(tf.io.read_file(path), 3, 
+                try_recover_truncated = True)
+    image = tf.image.resize(image, (224, 224))
+    return image, label
+
+def train_map(image, label):
+    image = tf.image.random_flip_left_right(image)
+    image = tf.image.random_hue(image, .2)
+    image = tf.image.random_brightness(image, .2)
+    image = image/255
+    return image, label
+
+def val_map(image, label):
+    image = image/255
+    return image, label
+    
 
