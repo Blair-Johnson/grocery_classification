@@ -1,10 +1,10 @@
 <?xml version="1.0" ?>
 <net name="mobilenetv2" version="10">
 	<layers>
-		<layer id="0" name="x" type="Parameter" version="opset1">
+		<layer id="0" name="mobilenetv2_1_00_224_input" type="Parameter" version="opset1">
 			<data shape="1, 3, 224, 224" element_type="f32"/>
 			<output>
-				<port id="0" precision="FP32" names="x:0">
+				<port id="0" precision="FP32" names="Func/StatefulPartitionedCall/input/_0:0,mobilenetv2_1_00_224_input:0">
 					<dim>1</dim>
 					<dim>3</dim>
 					<dim>224</dim>
@@ -12,10 +12,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="1" name="sequential/mobilenetv2_1.00_224/bn_Conv1/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="1" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/bn_Conv1/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="32, 3, 3, 3" offset="0" size="3456"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/Conv1/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/Conv1/Conv2D/ReadVariableOp:0">
 					<dim>32</dim>
 					<dim>3</dim>
 					<dim>3</dim>
@@ -23,7 +23,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="2" name="sequential/mobilenetv2_1.00_224/Conv1/Conv2D" type="Convolution" version="opset1">
+		<layer id="2" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/Conv1/Conv2D" type="Convolution" version="opset1">
 			<data strides="2, 2" dilations="1, 1" pads_begin="0, 0" pads_end="1, 1" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -48,7 +48,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="3" name="data_add_11589" type="Const" version="opset1">
+		<layer id="3" name="data_add_12120" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 32, 1, 1" offset="3456" size="128"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -59,7 +59,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="4" name="sequential/mobilenetv2_1.00_224/bn_Conv1/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="4" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/bn_Conv1/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -76,7 +76,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/bn_Conv1/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/bn_Conv1/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>32</dim>
 					<dim>112</dim>
@@ -84,7 +84,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="5" name="sequential/mobilenetv2_1.00_224/Conv1_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="5" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/Conv1_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -95,7 +95,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/Conv1_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/Conv1_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>32</dim>
 					<dim>112</dim>
@@ -103,10 +103,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="6" name="sequential/mobilenetv2_1.00_224/expanded_conv_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="6" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/expanded_conv_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="32, 1, 1, 3, 3" offset="3584" size="1152"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/expanded_conv_depthwise/depthwise/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/expanded_conv_depthwise/depthwise/ReadVariableOp:0">
 					<dim>32</dim>
 					<dim>1</dim>
 					<dim>1</dim>
@@ -115,7 +115,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="7" name="sequential/mobilenetv2_1.00_224/expanded_conv_depthwise/depthwise" type="GroupConvolution" version="opset1">
+		<layer id="7" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/expanded_conv_depthwise/depthwise" type="GroupConvolution" version="opset1">
 			<data strides="1, 1" pads_begin="1, 1" pads_end="1, 1" dilations="1, 1" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -141,7 +141,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="8" name="data_add_1159211597" type="Const" version="opset1">
+		<layer id="8" name="data_add_1212312128" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 32, 1, 1" offset="4736" size="128"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -152,7 +152,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="9" name="sequential/mobilenetv2_1.00_224/expanded_conv_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="9" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/expanded_conv_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -169,7 +169,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/expanded_conv_depthwise_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/expanded_conv_depthwise_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>32</dim>
 					<dim>112</dim>
@@ -177,7 +177,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="10" name="sequential/mobilenetv2_1.00_224/expanded_conv_depthwise_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="10" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/expanded_conv_depthwise_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -188,7 +188,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/expanded_conv_depthwise_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/expanded_conv_depthwise_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>32</dim>
 					<dim>112</dim>
@@ -196,10 +196,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="11" name="sequential/mobilenetv2_1.00_224/expanded_conv_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="11" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/expanded_conv_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="16, 32, 1, 1" offset="4864" size="2048"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/expanded_conv_project/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/expanded_conv_project/Conv2D/ReadVariableOp:0">
 					<dim>16</dim>
 					<dim>32</dim>
 					<dim>1</dim>
@@ -207,7 +207,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="12" name="sequential/mobilenetv2_1.00_224/expanded_conv_project/Conv2D" type="Convolution" version="opset1">
+		<layer id="12" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/expanded_conv_project/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -232,7 +232,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="13" name="data_add_1160011605" type="Const" version="opset1">
+		<layer id="13" name="data_add_1213112136" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 16, 1, 1" offset="6912" size="64"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -243,7 +243,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="14" name="sequential/mobilenetv2_1.00_224/expanded_conv_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="14" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/expanded_conv_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -260,7 +260,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/expanded_conv_project_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/expanded_conv_project_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>16</dim>
 					<dim>112</dim>
@@ -268,10 +268,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="15" name="sequential/mobilenetv2_1.00_224/block_1_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="15" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="96, 16, 1, 1" offset="6976" size="6144"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_1_expand/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_expand/Conv2D/ReadVariableOp:0">
 					<dim>96</dim>
 					<dim>16</dim>
 					<dim>1</dim>
@@ -279,7 +279,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="16" name="sequential/mobilenetv2_1.00_224/block_1_expand/Conv2D" type="Convolution" version="opset1">
+		<layer id="16" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_expand/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -304,7 +304,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="17" name="data_add_1160811613" type="Const" version="opset1">
+		<layer id="17" name="data_add_1213912144" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 96, 1, 1" offset="13120" size="384"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -315,7 +315,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="18" name="sequential/mobilenetv2_1.00_224/block_1_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="18" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -332,7 +332,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_1_expand_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_expand_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>112</dim>
@@ -340,7 +340,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="19" name="sequential/mobilenetv2_1.00_224/block_1_expand_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="19" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_expand_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -351,7 +351,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_1_expand_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_expand_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>112</dim>
@@ -359,7 +359,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="20" name="1564821101" type="Const" version="opset1">
+		<layer id="20" name="1617921470" type="Const" version="opset1">
 			<data element_type="i64" shape="4" offset="13504" size="32"/>
 			<output>
 				<port id="0" precision="I64">
@@ -367,7 +367,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="21" name="1565420852" type="Const" version="opset1">
+		<layer id="21" name="1618521389" type="Const" version="opset1">
 			<data element_type="i64" shape="4" offset="13536" size="32"/>
 			<output>
 				<port id="0" precision="I64">
@@ -375,13 +375,13 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="22" name="sequential/mobilenetv2_1.00_224/block_1_pad/Pad/pad_value_convert_input_port_0/value" type="Const" version="opset1">
+		<layer id="22" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_pad/Pad/pad_value_convert_input_port_0/value" type="Const" version="opset1">
 			<data element_type="f32" shape="" offset="13568" size="4"/>
 			<output>
 				<port id="0" precision="FP32"/>
 			</output>
 		</layer>
-		<layer id="23" name="sequential/mobilenetv2_1.00_224/block_1_pad/Pad/pad_value_convert" type="ConvertLike" version="opset1">
+		<layer id="23" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_pad/Pad/pad_value_convert" type="ConvertLike" version="opset1">
 			<input>
 				<port id="0" precision="FP32"/>
 				<port id="1" precision="FP32">
@@ -395,7 +395,7 @@
 				<port id="2" precision="FP32"/>
 			</output>
 		</layer>
-		<layer id="24" name="sequential/mobilenetv2_1.00_224/block_1_pad/Pad" type="Pad" version="opset1">
+		<layer id="24" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_pad/Pad" type="Pad" version="opset1">
 			<data pad_mode="constant"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -413,7 +413,7 @@
 				<port id="3" precision="FP32"/>
 			</input>
 			<output>
-				<port id="4" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_1_pad/Pad:0">
+				<port id="4" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_pad/Pad:0">
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>113</dim>
@@ -421,10 +421,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="25" name="sequential/mobilenetv2_1.00_224/block_1_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="25" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="96, 1, 1, 3, 3" offset="13572" size="3456"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_1_depthwise/depthwise/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_depthwise/depthwise/ReadVariableOp:0">
 					<dim>96</dim>
 					<dim>1</dim>
 					<dim>1</dim>
@@ -433,7 +433,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="26" name="sequential/mobilenetv2_1.00_224/block_1_depthwise/depthwise" type="GroupConvolution" version="opset1">
+		<layer id="26" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_depthwise/depthwise" type="GroupConvolution" version="opset1">
 			<data strides="2, 2" pads_begin="0, 0" pads_end="0, 0" dilations="1, 1" auto_pad="valid"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -459,7 +459,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="27" name="data_add_1161611621" type="Const" version="opset1">
+		<layer id="27" name="data_add_1214712152" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 96, 1, 1" offset="17028" size="384"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -470,7 +470,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="28" name="sequential/mobilenetv2_1.00_224/block_1_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="28" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -487,7 +487,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_1_depthwise_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_depthwise_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>56</dim>
@@ -495,7 +495,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="29" name="sequential/mobilenetv2_1.00_224/block_1_depthwise_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="29" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_depthwise_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -506,7 +506,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_1_depthwise_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_depthwise_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>56</dim>
@@ -514,10 +514,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="30" name="sequential/mobilenetv2_1.00_224/block_1_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="30" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="24, 96, 1, 1" offset="17412" size="9216"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_1_project/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_project/Conv2D/ReadVariableOp:0">
 					<dim>24</dim>
 					<dim>96</dim>
 					<dim>1</dim>
@@ -525,7 +525,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="31" name="sequential/mobilenetv2_1.00_224/block_1_project/Conv2D" type="Convolution" version="opset1">
+		<layer id="31" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_project/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -550,7 +550,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="32" name="data_add_1162411629" type="Const" version="opset1">
+		<layer id="32" name="data_add_1215512160" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 24, 1, 1" offset="26628" size="96"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -561,7 +561,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="33" name="sequential/mobilenetv2_1.00_224/block_1_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="33" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -578,7 +578,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_1_project_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_1_project_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>24</dim>
 					<dim>56</dim>
@@ -586,10 +586,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="34" name="sequential/mobilenetv2_1.00_224/block_2_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="34" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="144, 24, 1, 1" offset="26724" size="13824"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_2_expand/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_expand/Conv2D/ReadVariableOp:0">
 					<dim>144</dim>
 					<dim>24</dim>
 					<dim>1</dim>
@@ -597,7 +597,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="35" name="sequential/mobilenetv2_1.00_224/block_2_expand/Conv2D" type="Convolution" version="opset1">
+		<layer id="35" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_expand/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -622,7 +622,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="36" name="data_add_1163211637" type="Const" version="opset1">
+		<layer id="36" name="data_add_1216312168" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 144, 1, 1" offset="40548" size="576"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -633,7 +633,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="37" name="sequential/mobilenetv2_1.00_224/block_2_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="37" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -650,7 +650,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_2_expand_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_expand_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>56</dim>
@@ -658,7 +658,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="38" name="sequential/mobilenetv2_1.00_224/block_2_expand_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="38" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_expand_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -669,7 +669,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_2_expand_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_expand_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>56</dim>
@@ -677,10 +677,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="39" name="sequential/mobilenetv2_1.00_224/block_2_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="39" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="144, 1, 1, 3, 3" offset="41124" size="5184"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_2_depthwise/depthwise/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_depthwise/depthwise/ReadVariableOp:0">
 					<dim>144</dim>
 					<dim>1</dim>
 					<dim>1</dim>
@@ -689,7 +689,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="40" name="sequential/mobilenetv2_1.00_224/block_2_depthwise/depthwise" type="GroupConvolution" version="opset1">
+		<layer id="40" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_depthwise/depthwise" type="GroupConvolution" version="opset1">
 			<data strides="1, 1" pads_begin="1, 1" pads_end="1, 1" dilations="1, 1" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -715,7 +715,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="41" name="data_add_1164011645" type="Const" version="opset1">
+		<layer id="41" name="data_add_1217112176" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 144, 1, 1" offset="46308" size="576"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -726,7 +726,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="42" name="sequential/mobilenetv2_1.00_224/block_2_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="42" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -743,7 +743,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_2_depthwise_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_depthwise_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>56</dim>
@@ -751,7 +751,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="43" name="sequential/mobilenetv2_1.00_224/block_2_depthwise_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="43" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_depthwise_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -762,7 +762,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_2_depthwise_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_depthwise_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>56</dim>
@@ -770,10 +770,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="44" name="sequential/mobilenetv2_1.00_224/block_2_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="44" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="24, 144, 1, 1" offset="46884" size="13824"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_2_project/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_project/Conv2D/ReadVariableOp:0">
 					<dim>24</dim>
 					<dim>144</dim>
 					<dim>1</dim>
@@ -781,7 +781,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="45" name="sequential/mobilenetv2_1.00_224/block_2_project/Conv2D" type="Convolution" version="opset1">
+		<layer id="45" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_project/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -806,7 +806,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="46" name="data_add_1164811653" type="Const" version="opset1">
+		<layer id="46" name="data_add_1217912184" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 24, 1, 1" offset="60708" size="96"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -817,7 +817,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="47" name="sequential/mobilenetv2_1.00_224/block_2_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="47" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -834,7 +834,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_2_project_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_project_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>24</dim>
 					<dim>56</dim>
@@ -842,7 +842,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="48" name="sequential/mobilenetv2_1.00_224/block_2_add/add" type="Add" version="opset1">
+		<layer id="48" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_add/add" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -859,7 +859,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_2_add/add:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_2_add/add:0">
 					<dim>1</dim>
 					<dim>24</dim>
 					<dim>56</dim>
@@ -867,10 +867,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="49" name="sequential/mobilenetv2_1.00_224/block_3_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="49" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="144, 24, 1, 1" offset="60804" size="13824"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_3_expand/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_expand/Conv2D/ReadVariableOp:0">
 					<dim>144</dim>
 					<dim>24</dim>
 					<dim>1</dim>
@@ -878,7 +878,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="50" name="sequential/mobilenetv2_1.00_224/block_3_expand/Conv2D" type="Convolution" version="opset1">
+		<layer id="50" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_expand/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -903,7 +903,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="51" name="data_add_1165611661" type="Const" version="opset1">
+		<layer id="51" name="data_add_1218712192" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 144, 1, 1" offset="74628" size="576"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -914,7 +914,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="52" name="sequential/mobilenetv2_1.00_224/block_3_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="52" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -931,7 +931,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_3_expand_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_expand_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>56</dim>
@@ -939,7 +939,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="53" name="sequential/mobilenetv2_1.00_224/block_3_expand_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="53" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_expand_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -950,7 +950,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_3_expand_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_expand_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>56</dim>
@@ -958,7 +958,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="54" name="1566021047" type="Const" version="opset1">
+		<layer id="54" name="1619121602" type="Const" version="opset1">
 			<data element_type="i64" shape="4" offset="13504" size="32"/>
 			<output>
 				<port id="0" precision="I64">
@@ -966,7 +966,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="55" name="1566621059" type="Const" version="opset1">
+		<layer id="55" name="1619721521" type="Const" version="opset1">
 			<data element_type="i64" shape="4" offset="13536" size="32"/>
 			<output>
 				<port id="0" precision="I64">
@@ -974,13 +974,13 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="56" name="sequential/mobilenetv2_1.00_224/block_3_pad/Pad/pad_value_convert_input_port_0/value" type="Const" version="opset1">
+		<layer id="56" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_pad/Pad/pad_value_convert_input_port_0/value" type="Const" version="opset1">
 			<data element_type="f32" shape="" offset="13568" size="4"/>
 			<output>
 				<port id="0" precision="FP32"/>
 			</output>
 		</layer>
-		<layer id="57" name="sequential/mobilenetv2_1.00_224/block_3_pad/Pad/pad_value_convert" type="ConvertLike" version="opset1">
+		<layer id="57" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_pad/Pad/pad_value_convert" type="ConvertLike" version="opset1">
 			<input>
 				<port id="0" precision="FP32"/>
 				<port id="1" precision="FP32">
@@ -994,7 +994,7 @@
 				<port id="2" precision="FP32"/>
 			</output>
 		</layer>
-		<layer id="58" name="sequential/mobilenetv2_1.00_224/block_3_pad/Pad" type="Pad" version="opset1">
+		<layer id="58" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_pad/Pad" type="Pad" version="opset1">
 			<data pad_mode="constant"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1012,7 +1012,7 @@
 				<port id="3" precision="FP32"/>
 			</input>
 			<output>
-				<port id="4" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_3_pad/Pad:0">
+				<port id="4" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_pad/Pad:0">
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>57</dim>
@@ -1020,10 +1020,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="59" name="sequential/mobilenetv2_1.00_224/block_3_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="59" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="144, 1, 1, 3, 3" offset="75204" size="5184"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_3_depthwise/depthwise/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_depthwise/depthwise/ReadVariableOp:0">
 					<dim>144</dim>
 					<dim>1</dim>
 					<dim>1</dim>
@@ -1032,7 +1032,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="60" name="sequential/mobilenetv2_1.00_224/block_3_depthwise/depthwise" type="GroupConvolution" version="opset1">
+		<layer id="60" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_depthwise/depthwise" type="GroupConvolution" version="opset1">
 			<data strides="2, 2" pads_begin="0, 0" pads_end="0, 0" dilations="1, 1" auto_pad="valid"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1058,7 +1058,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="61" name="data_add_1166411669" type="Const" version="opset1">
+		<layer id="61" name="data_add_1219512200" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 144, 1, 1" offset="80388" size="576"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -1069,7 +1069,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="62" name="sequential/mobilenetv2_1.00_224/block_3_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="62" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1086,7 +1086,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_3_depthwise_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_depthwise_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>28</dim>
@@ -1094,7 +1094,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="63" name="sequential/mobilenetv2_1.00_224/block_3_depthwise_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="63" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_depthwise_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1105,7 +1105,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_3_depthwise_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_depthwise_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>144</dim>
 					<dim>28</dim>
@@ -1113,10 +1113,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="64" name="sequential/mobilenetv2_1.00_224/block_3_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="64" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="32, 144, 1, 1" offset="80964" size="18432"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_3_project/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_project/Conv2D/ReadVariableOp:0">
 					<dim>32</dim>
 					<dim>144</dim>
 					<dim>1</dim>
@@ -1124,7 +1124,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="65" name="sequential/mobilenetv2_1.00_224/block_3_project/Conv2D" type="Convolution" version="opset1">
+		<layer id="65" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_project/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1149,7 +1149,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="66" name="data_add_1167211677" type="Const" version="opset1">
+		<layer id="66" name="data_add_1220312208" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 32, 1, 1" offset="99396" size="128"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -1160,7 +1160,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="67" name="sequential/mobilenetv2_1.00_224/block_3_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="67" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1177,7 +1177,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_3_project_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_3_project_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>32</dim>
 					<dim>28</dim>
@@ -1185,10 +1185,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="68" name="sequential/mobilenetv2_1.00_224/block_4_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="68" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="192, 32, 1, 1" offset="99524" size="24576"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_4_expand/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_expand/Conv2D/ReadVariableOp:0">
 					<dim>192</dim>
 					<dim>32</dim>
 					<dim>1</dim>
@@ -1196,7 +1196,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="69" name="sequential/mobilenetv2_1.00_224/block_4_expand/Conv2D" type="Convolution" version="opset1">
+		<layer id="69" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_expand/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1221,7 +1221,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="70" name="data_add_1168011685" type="Const" version="opset1">
+		<layer id="70" name="data_add_1221112216" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 192, 1, 1" offset="124100" size="768"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -1232,7 +1232,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="71" name="sequential/mobilenetv2_1.00_224/block_4_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="71" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1249,7 +1249,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_4_expand_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_expand_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>192</dim>
 					<dim>28</dim>
@@ -1257,7 +1257,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="72" name="sequential/mobilenetv2_1.00_224/block_4_expand_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="72" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_expand_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1268,7 +1268,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_4_expand_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_expand_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>192</dim>
 					<dim>28</dim>
@@ -1276,10 +1276,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="73" name="sequential/mobilenetv2_1.00_224/block_4_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="73" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="192, 1, 1, 3, 3" offset="124868" size="6912"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_4_depthwise/depthwise/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_depthwise/depthwise/ReadVariableOp:0">
 					<dim>192</dim>
 					<dim>1</dim>
 					<dim>1</dim>
@@ -1288,7 +1288,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="74" name="sequential/mobilenetv2_1.00_224/block_4_depthwise/depthwise" type="GroupConvolution" version="opset1">
+		<layer id="74" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_depthwise/depthwise" type="GroupConvolution" version="opset1">
 			<data strides="1, 1" pads_begin="1, 1" pads_end="1, 1" dilations="1, 1" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1314,7 +1314,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="75" name="data_add_1168811693" type="Const" version="opset1">
+		<layer id="75" name="data_add_1221912224" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 192, 1, 1" offset="131780" size="768"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -1325,7 +1325,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="76" name="sequential/mobilenetv2_1.00_224/block_4_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="76" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1342,7 +1342,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_4_depthwise_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_depthwise_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>192</dim>
 					<dim>28</dim>
@@ -1350,7 +1350,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="77" name="sequential/mobilenetv2_1.00_224/block_4_depthwise_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="77" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_depthwise_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1361,7 +1361,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_4_depthwise_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_depthwise_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>192</dim>
 					<dim>28</dim>
@@ -1369,10 +1369,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="78" name="sequential/mobilenetv2_1.00_224/block_4_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="78" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="32, 192, 1, 1" offset="132548" size="24576"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_4_project/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_project/Conv2D/ReadVariableOp:0">
 					<dim>32</dim>
 					<dim>192</dim>
 					<dim>1</dim>
@@ -1380,7 +1380,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="79" name="sequential/mobilenetv2_1.00_224/block_4_project/Conv2D" type="Convolution" version="opset1">
+		<layer id="79" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_project/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1405,7 +1405,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="80" name="data_add_1169611701" type="Const" version="opset1">
+		<layer id="80" name="data_add_1222712232" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 32, 1, 1" offset="157124" size="128"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -1416,7 +1416,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="81" name="sequential/mobilenetv2_1.00_224/block_4_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="81" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1433,7 +1433,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_4_project_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_project_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>32</dim>
 					<dim>28</dim>
@@ -1441,7 +1441,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="82" name="sequential/mobilenetv2_1.00_224/block_4_add/add" type="Add" version="opset1">
+		<layer id="82" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_add/add" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1458,7 +1458,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_4_add/add:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_4_add/add:0">
 					<dim>1</dim>
 					<dim>32</dim>
 					<dim>28</dim>
@@ -1466,10 +1466,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="83" name="sequential/mobilenetv2_1.00_224/block_5_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="83" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="192, 32, 1, 1" offset="157252" size="24576"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_5_expand/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_expand/Conv2D/ReadVariableOp:0">
 					<dim>192</dim>
 					<dim>32</dim>
 					<dim>1</dim>
@@ -1477,7 +1477,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="84" name="sequential/mobilenetv2_1.00_224/block_5_expand/Conv2D" type="Convolution" version="opset1">
+		<layer id="84" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_expand/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1502,7 +1502,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="85" name="data_add_1170411709" type="Const" version="opset1">
+		<layer id="85" name="data_add_1223512240" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 192, 1, 1" offset="181828" size="768"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -1513,7 +1513,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="86" name="sequential/mobilenetv2_1.00_224/block_5_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="86" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1530,7 +1530,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_5_expand_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_expand_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>192</dim>
 					<dim>28</dim>
@@ -1538,7 +1538,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="87" name="sequential/mobilenetv2_1.00_224/block_5_expand_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="87" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_expand_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1549,7 +1549,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_5_expand_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_expand_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>192</dim>
 					<dim>28</dim>
@@ -1557,10 +1557,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="88" name="sequential/mobilenetv2_1.00_224/block_5_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="88" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="192, 1, 1, 3, 3" offset="182596" size="6912"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_5_depthwise/depthwise/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_depthwise/depthwise/ReadVariableOp:0">
 					<dim>192</dim>
 					<dim>1</dim>
 					<dim>1</dim>
@@ -1569,7 +1569,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="89" name="sequential/mobilenetv2_1.00_224/block_5_depthwise/depthwise" type="GroupConvolution" version="opset1">
+		<layer id="89" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_depthwise/depthwise" type="GroupConvolution" version="opset1">
 			<data strides="1, 1" pads_begin="1, 1" pads_end="1, 1" dilations="1, 1" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1595,7 +1595,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="90" name="data_add_1171211717" type="Const" version="opset1">
+		<layer id="90" name="data_add_1224312248" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 192, 1, 1" offset="189508" size="768"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -1606,7 +1606,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="91" name="sequential/mobilenetv2_1.00_224/block_5_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="91" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1623,7 +1623,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_5_depthwise_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_depthwise_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>192</dim>
 					<dim>28</dim>
@@ -1631,7 +1631,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="92" name="sequential/mobilenetv2_1.00_224/block_5_depthwise_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="92" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_depthwise_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1642,7 +1642,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_5_depthwise_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_depthwise_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>192</dim>
 					<dim>28</dim>
@@ -1650,10 +1650,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="93" name="sequential/mobilenetv2_1.00_224/block_5_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="93" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="32, 192, 1, 1" offset="190276" size="24576"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_5_project/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_project/Conv2D/ReadVariableOp:0">
 					<dim>32</dim>
 					<dim>192</dim>
 					<dim>1</dim>
@@ -1661,7 +1661,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="94" name="sequential/mobilenetv2_1.00_224/block_5_project/Conv2D" type="Convolution" version="opset1">
+		<layer id="94" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_project/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1686,7 +1686,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="95" name="data_add_1172011725" type="Const" version="opset1">
+		<layer id="95" name="data_add_1225112256" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 32, 1, 1" offset="214852" size="128"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -1697,7 +1697,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="96" name="sequential/mobilenetv2_1.00_224/block_5_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="96" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1714,7 +1714,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_5_project_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_project_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>32</dim>
 					<dim>28</dim>
@@ -1722,7 +1722,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="97" name="sequential/mobilenetv2_1.00_224/block_5_add/add" type="Add" version="opset1">
+		<layer id="97" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_add/add" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1739,7 +1739,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_5_add/add:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_5_add/add:0">
 					<dim>1</dim>
 					<dim>32</dim>
 					<dim>28</dim>
@@ -1747,10 +1747,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="98" name="sequential/mobilenetv2_1.00_224/block_6_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="98" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="192, 32, 1, 1" offset="214980" size="24576"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_6_expand/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_expand/Conv2D/ReadVariableOp:0">
 					<dim>192</dim>
 					<dim>32</dim>
 					<dim>1</dim>
@@ -1758,7 +1758,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="99" name="sequential/mobilenetv2_1.00_224/block_6_expand/Conv2D" type="Convolution" version="opset1">
+		<layer id="99" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_expand/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1783,7 +1783,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="100" name="data_add_1172811733" type="Const" version="opset1">
+		<layer id="100" name="data_add_1225912264" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 192, 1, 1" offset="239556" size="768"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -1794,7 +1794,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="101" name="sequential/mobilenetv2_1.00_224/block_6_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="101" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1811,7 +1811,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_6_expand_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_expand_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>192</dim>
 					<dim>28</dim>
@@ -1819,7 +1819,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="102" name="sequential/mobilenetv2_1.00_224/block_6_expand_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="102" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_expand_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1830,7 +1830,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_6_expand_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_expand_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>192</dim>
 					<dim>28</dim>
@@ -1838,7 +1838,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="103" name="1567220897" type="Const" version="opset1">
+		<layer id="103" name="1620321413" type="Const" version="opset1">
 			<data element_type="i64" shape="4" offset="13504" size="32"/>
 			<output>
 				<port id="0" precision="I64">
@@ -1846,7 +1846,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="104" name="1567820819" type="Const" version="opset1">
+		<layer id="104" name="1620921407" type="Const" version="opset1">
 			<data element_type="i64" shape="4" offset="13536" size="32"/>
 			<output>
 				<port id="0" precision="I64">
@@ -1854,13 +1854,13 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="105" name="sequential/mobilenetv2_1.00_224/block_6_pad/Pad/pad_value_convert_input_port_0/value" type="Const" version="opset1">
+		<layer id="105" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_pad/Pad/pad_value_convert_input_port_0/value" type="Const" version="opset1">
 			<data element_type="f32" shape="" offset="13568" size="4"/>
 			<output>
 				<port id="0" precision="FP32"/>
 			</output>
 		</layer>
-		<layer id="106" name="sequential/mobilenetv2_1.00_224/block_6_pad/Pad/pad_value_convert" type="ConvertLike" version="opset1">
+		<layer id="106" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_pad/Pad/pad_value_convert" type="ConvertLike" version="opset1">
 			<input>
 				<port id="0" precision="FP32"/>
 				<port id="1" precision="FP32">
@@ -1874,7 +1874,7 @@
 				<port id="2" precision="FP32"/>
 			</output>
 		</layer>
-		<layer id="107" name="sequential/mobilenetv2_1.00_224/block_6_pad/Pad" type="Pad" version="opset1">
+		<layer id="107" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_pad/Pad" type="Pad" version="opset1">
 			<data pad_mode="constant"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1892,7 +1892,7 @@
 				<port id="3" precision="FP32"/>
 			</input>
 			<output>
-				<port id="4" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_6_pad/Pad:0">
+				<port id="4" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_pad/Pad:0">
 					<dim>1</dim>
 					<dim>192</dim>
 					<dim>29</dim>
@@ -1900,10 +1900,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="108" name="sequential/mobilenetv2_1.00_224/block_6_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="108" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="192, 1, 1, 3, 3" offset="240324" size="6912"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_6_depthwise/depthwise/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_depthwise/depthwise/ReadVariableOp:0">
 					<dim>192</dim>
 					<dim>1</dim>
 					<dim>1</dim>
@@ -1912,7 +1912,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="109" name="sequential/mobilenetv2_1.00_224/block_6_depthwise/depthwise" type="GroupConvolution" version="opset1">
+		<layer id="109" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_depthwise/depthwise" type="GroupConvolution" version="opset1">
 			<data strides="2, 2" pads_begin="0, 0" pads_end="0, 0" dilations="1, 1" auto_pad="valid"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1938,7 +1938,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="110" name="data_add_1173611741" type="Const" version="opset1">
+		<layer id="110" name="data_add_1226712272" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 192, 1, 1" offset="247236" size="768"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -1949,7 +1949,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="111" name="sequential/mobilenetv2_1.00_224/block_6_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="111" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1966,7 +1966,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_6_depthwise_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_depthwise_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>192</dim>
 					<dim>14</dim>
@@ -1974,7 +1974,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="112" name="sequential/mobilenetv2_1.00_224/block_6_depthwise_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="112" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_depthwise_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -1985,7 +1985,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_6_depthwise_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_depthwise_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>192</dim>
 					<dim>14</dim>
@@ -1993,10 +1993,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="113" name="sequential/mobilenetv2_1.00_224/block_6_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="113" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="64, 192, 1, 1" offset="248004" size="49152"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_6_project/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_project/Conv2D/ReadVariableOp:0">
 					<dim>64</dim>
 					<dim>192</dim>
 					<dim>1</dim>
@@ -2004,7 +2004,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="114" name="sequential/mobilenetv2_1.00_224/block_6_project/Conv2D" type="Convolution" version="opset1">
+		<layer id="114" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_project/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2029,7 +2029,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="115" name="data_add_1174411749" type="Const" version="opset1">
+		<layer id="115" name="data_add_1227512280" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 64, 1, 1" offset="297156" size="256"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -2040,7 +2040,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="116" name="sequential/mobilenetv2_1.00_224/block_6_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="116" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2057,7 +2057,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_6_project_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_6_project_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>64</dim>
 					<dim>14</dim>
@@ -2065,10 +2065,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="117" name="sequential/mobilenetv2_1.00_224/block_7_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="117" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="384, 64, 1, 1" offset="297412" size="98304"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_7_expand/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_expand/Conv2D/ReadVariableOp:0">
 					<dim>384</dim>
 					<dim>64</dim>
 					<dim>1</dim>
@@ -2076,7 +2076,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="118" name="sequential/mobilenetv2_1.00_224/block_7_expand/Conv2D" type="Convolution" version="opset1">
+		<layer id="118" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_expand/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2101,7 +2101,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="119" name="data_add_1175211757" type="Const" version="opset1">
+		<layer id="119" name="data_add_1228312288" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 384, 1, 1" offset="395716" size="1536"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -2112,7 +2112,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="120" name="sequential/mobilenetv2_1.00_224/block_7_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="120" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2129,7 +2129,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_7_expand_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_expand_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>384</dim>
 					<dim>14</dim>
@@ -2137,7 +2137,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="121" name="sequential/mobilenetv2_1.00_224/block_7_expand_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="121" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_expand_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2148,7 +2148,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_7_expand_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_expand_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>384</dim>
 					<dim>14</dim>
@@ -2156,10 +2156,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="122" name="sequential/mobilenetv2_1.00_224/block_7_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="122" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="384, 1, 1, 3, 3" offset="397252" size="13824"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_7_depthwise/depthwise/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_depthwise/depthwise/ReadVariableOp:0">
 					<dim>384</dim>
 					<dim>1</dim>
 					<dim>1</dim>
@@ -2168,7 +2168,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="123" name="sequential/mobilenetv2_1.00_224/block_7_depthwise/depthwise" type="GroupConvolution" version="opset1">
+		<layer id="123" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_depthwise/depthwise" type="GroupConvolution" version="opset1">
 			<data strides="1, 1" pads_begin="1, 1" pads_end="1, 1" dilations="1, 1" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2194,7 +2194,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="124" name="data_add_1176011765" type="Const" version="opset1">
+		<layer id="124" name="data_add_1229112296" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 384, 1, 1" offset="411076" size="1536"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -2205,7 +2205,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="125" name="sequential/mobilenetv2_1.00_224/block_7_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="125" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2222,7 +2222,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_7_depthwise_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_depthwise_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>384</dim>
 					<dim>14</dim>
@@ -2230,7 +2230,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="126" name="sequential/mobilenetv2_1.00_224/block_7_depthwise_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="126" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_depthwise_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2241,7 +2241,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_7_depthwise_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_depthwise_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>384</dim>
 					<dim>14</dim>
@@ -2249,10 +2249,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="127" name="sequential/mobilenetv2_1.00_224/block_7_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="127" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="64, 384, 1, 1" offset="412612" size="98304"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_7_project/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_project/Conv2D/ReadVariableOp:0">
 					<dim>64</dim>
 					<dim>384</dim>
 					<dim>1</dim>
@@ -2260,7 +2260,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="128" name="sequential/mobilenetv2_1.00_224/block_7_project/Conv2D" type="Convolution" version="opset1">
+		<layer id="128" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_project/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2285,7 +2285,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="129" name="data_add_1176811773" type="Const" version="opset1">
+		<layer id="129" name="data_add_1229912304" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 64, 1, 1" offset="510916" size="256"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -2296,7 +2296,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="130" name="sequential/mobilenetv2_1.00_224/block_7_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="130" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2313,7 +2313,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_7_project_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_project_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>64</dim>
 					<dim>14</dim>
@@ -2321,7 +2321,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="131" name="sequential/mobilenetv2_1.00_224/block_7_add/add" type="Add" version="opset1">
+		<layer id="131" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_add/add" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2338,7 +2338,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_7_add/add:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_7_add/add:0">
 					<dim>1</dim>
 					<dim>64</dim>
 					<dim>14</dim>
@@ -2346,10 +2346,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="132" name="sequential/mobilenetv2_1.00_224/block_8_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="132" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="384, 64, 1, 1" offset="511172" size="98304"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_8_expand/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_expand/Conv2D/ReadVariableOp:0">
 					<dim>384</dim>
 					<dim>64</dim>
 					<dim>1</dim>
@@ -2357,7 +2357,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="133" name="sequential/mobilenetv2_1.00_224/block_8_expand/Conv2D" type="Convolution" version="opset1">
+		<layer id="133" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_expand/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2382,7 +2382,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="134" name="data_add_1177611781" type="Const" version="opset1">
+		<layer id="134" name="data_add_1230712312" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 384, 1, 1" offset="609476" size="1536"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -2393,7 +2393,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="135" name="sequential/mobilenetv2_1.00_224/block_8_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="135" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2410,7 +2410,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_8_expand_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_expand_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>384</dim>
 					<dim>14</dim>
@@ -2418,7 +2418,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="136" name="sequential/mobilenetv2_1.00_224/block_8_expand_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="136" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_expand_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2429,7 +2429,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_8_expand_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_expand_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>384</dim>
 					<dim>14</dim>
@@ -2437,10 +2437,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="137" name="sequential/mobilenetv2_1.00_224/block_8_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="137" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="384, 1, 1, 3, 3" offset="611012" size="13824"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_8_depthwise/depthwise/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_depthwise/depthwise/ReadVariableOp:0">
 					<dim>384</dim>
 					<dim>1</dim>
 					<dim>1</dim>
@@ -2449,7 +2449,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="138" name="sequential/mobilenetv2_1.00_224/block_8_depthwise/depthwise" type="GroupConvolution" version="opset1">
+		<layer id="138" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_depthwise/depthwise" type="GroupConvolution" version="opset1">
 			<data strides="1, 1" pads_begin="1, 1" pads_end="1, 1" dilations="1, 1" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2475,7 +2475,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="139" name="data_add_1178411789" type="Const" version="opset1">
+		<layer id="139" name="data_add_1231512320" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 384, 1, 1" offset="624836" size="1536"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -2486,7 +2486,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="140" name="sequential/mobilenetv2_1.00_224/block_8_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="140" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2503,7 +2503,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_8_depthwise_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_depthwise_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>384</dim>
 					<dim>14</dim>
@@ -2511,7 +2511,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="141" name="sequential/mobilenetv2_1.00_224/block_8_depthwise_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="141" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_depthwise_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2522,7 +2522,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_8_depthwise_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_depthwise_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>384</dim>
 					<dim>14</dim>
@@ -2530,10 +2530,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="142" name="sequential/mobilenetv2_1.00_224/block_8_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="142" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="64, 384, 1, 1" offset="626372" size="98304"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_8_project/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_project/Conv2D/ReadVariableOp:0">
 					<dim>64</dim>
 					<dim>384</dim>
 					<dim>1</dim>
@@ -2541,7 +2541,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="143" name="sequential/mobilenetv2_1.00_224/block_8_project/Conv2D" type="Convolution" version="opset1">
+		<layer id="143" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_project/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2566,7 +2566,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="144" name="data_add_1179211797" type="Const" version="opset1">
+		<layer id="144" name="data_add_1232312328" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 64, 1, 1" offset="724676" size="256"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -2577,7 +2577,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="145" name="sequential/mobilenetv2_1.00_224/block_8_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="145" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2594,7 +2594,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_8_project_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_project_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>64</dim>
 					<dim>14</dim>
@@ -2602,7 +2602,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="146" name="sequential/mobilenetv2_1.00_224/block_8_add/add" type="Add" version="opset1">
+		<layer id="146" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_add/add" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2619,7 +2619,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_8_add/add:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_8_add/add:0">
 					<dim>1</dim>
 					<dim>64</dim>
 					<dim>14</dim>
@@ -2627,10 +2627,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="147" name="sequential/mobilenetv2_1.00_224/block_9_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="147" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="384, 64, 1, 1" offset="724932" size="98304"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_9_expand/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_expand/Conv2D/ReadVariableOp:0">
 					<dim>384</dim>
 					<dim>64</dim>
 					<dim>1</dim>
@@ -2638,7 +2638,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="148" name="sequential/mobilenetv2_1.00_224/block_9_expand/Conv2D" type="Convolution" version="opset1">
+		<layer id="148" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_expand/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2663,7 +2663,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="149" name="data_add_1180011805" type="Const" version="opset1">
+		<layer id="149" name="data_add_1233112336" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 384, 1, 1" offset="823236" size="1536"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -2674,7 +2674,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="150" name="sequential/mobilenetv2_1.00_224/block_9_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="150" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2691,7 +2691,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_9_expand_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_expand_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>384</dim>
 					<dim>14</dim>
@@ -2699,7 +2699,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="151" name="sequential/mobilenetv2_1.00_224/block_9_expand_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="151" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_expand_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2710,7 +2710,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_9_expand_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_expand_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>384</dim>
 					<dim>14</dim>
@@ -2718,10 +2718,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="152" name="sequential/mobilenetv2_1.00_224/block_9_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="152" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="384, 1, 1, 3, 3" offset="824772" size="13824"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_9_depthwise/depthwise/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_depthwise/depthwise/ReadVariableOp:0">
 					<dim>384</dim>
 					<dim>1</dim>
 					<dim>1</dim>
@@ -2730,7 +2730,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="153" name="sequential/mobilenetv2_1.00_224/block_9_depthwise/depthwise" type="GroupConvolution" version="opset1">
+		<layer id="153" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_depthwise/depthwise" type="GroupConvolution" version="opset1">
 			<data strides="1, 1" pads_begin="1, 1" pads_end="1, 1" dilations="1, 1" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2756,7 +2756,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="154" name="data_add_1180811813" type="Const" version="opset1">
+		<layer id="154" name="data_add_1233912344" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 384, 1, 1" offset="838596" size="1536"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -2767,7 +2767,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="155" name="sequential/mobilenetv2_1.00_224/block_9_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="155" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2784,7 +2784,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_9_depthwise_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_depthwise_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>384</dim>
 					<dim>14</dim>
@@ -2792,7 +2792,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="156" name="sequential/mobilenetv2_1.00_224/block_9_depthwise_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="156" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_depthwise_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2803,7 +2803,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_9_depthwise_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_depthwise_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>384</dim>
 					<dim>14</dim>
@@ -2811,10 +2811,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="157" name="sequential/mobilenetv2_1.00_224/block_9_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="157" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="64, 384, 1, 1" offset="840132" size="98304"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_9_project/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_project/Conv2D/ReadVariableOp:0">
 					<dim>64</dim>
 					<dim>384</dim>
 					<dim>1</dim>
@@ -2822,7 +2822,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="158" name="sequential/mobilenetv2_1.00_224/block_9_project/Conv2D" type="Convolution" version="opset1">
+		<layer id="158" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_project/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2847,7 +2847,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="159" name="data_add_1181611821" type="Const" version="opset1">
+		<layer id="159" name="data_add_1234712352" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 64, 1, 1" offset="938436" size="256"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -2858,7 +2858,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="160" name="sequential/mobilenetv2_1.00_224/block_9_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="160" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2875,7 +2875,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_9_project_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_project_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>64</dim>
 					<dim>14</dim>
@@ -2883,7 +2883,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="161" name="sequential/mobilenetv2_1.00_224/block_9_add/add" type="Add" version="opset1">
+		<layer id="161" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_add/add" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2900,7 +2900,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_9_add/add:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_9_add/add:0">
 					<dim>1</dim>
 					<dim>64</dim>
 					<dim>14</dim>
@@ -2908,10 +2908,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="162" name="sequential/mobilenetv2_1.00_224/block_10_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="162" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="384, 64, 1, 1" offset="938692" size="98304"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_10_expand/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_expand/Conv2D/ReadVariableOp:0">
 					<dim>384</dim>
 					<dim>64</dim>
 					<dim>1</dim>
@@ -2919,7 +2919,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="163" name="sequential/mobilenetv2_1.00_224/block_10_expand/Conv2D" type="Convolution" version="opset1">
+		<layer id="163" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_expand/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2944,7 +2944,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="164" name="data_add_1182411829" type="Const" version="opset1">
+		<layer id="164" name="data_add_1235512360" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 384, 1, 1" offset="1036996" size="1536"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -2955,7 +2955,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="165" name="sequential/mobilenetv2_1.00_224/block_10_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="165" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2972,7 +2972,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_10_expand_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_expand_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>384</dim>
 					<dim>14</dim>
@@ -2980,7 +2980,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="166" name="sequential/mobilenetv2_1.00_224/block_10_expand_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="166" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_expand_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -2991,7 +2991,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_10_expand_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_expand_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>384</dim>
 					<dim>14</dim>
@@ -2999,10 +2999,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="167" name="sequential/mobilenetv2_1.00_224/block_10_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="167" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="384, 1, 1, 3, 3" offset="1038532" size="13824"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_10_depthwise/depthwise/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_depthwise/depthwise/ReadVariableOp:0">
 					<dim>384</dim>
 					<dim>1</dim>
 					<dim>1</dim>
@@ -3011,7 +3011,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="168" name="sequential/mobilenetv2_1.00_224/block_10_depthwise/depthwise" type="GroupConvolution" version="opset1">
+		<layer id="168" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_depthwise/depthwise" type="GroupConvolution" version="opset1">
 			<data strides="1, 1" pads_begin="1, 1" pads_end="1, 1" dilations="1, 1" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3037,7 +3037,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="169" name="data_add_1183211837" type="Const" version="opset1">
+		<layer id="169" name="data_add_1236312368" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 384, 1, 1" offset="1052356" size="1536"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -3048,7 +3048,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="170" name="sequential/mobilenetv2_1.00_224/block_10_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="170" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3065,7 +3065,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_10_depthwise_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_depthwise_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>384</dim>
 					<dim>14</dim>
@@ -3073,7 +3073,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="171" name="sequential/mobilenetv2_1.00_224/block_10_depthwise_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="171" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_depthwise_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3084,7 +3084,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_10_depthwise_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_depthwise_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>384</dim>
 					<dim>14</dim>
@@ -3092,10 +3092,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="172" name="sequential/mobilenetv2_1.00_224/block_10_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="172" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="96, 384, 1, 1" offset="1053892" size="147456"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_10_project/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_project/Conv2D/ReadVariableOp:0">
 					<dim>96</dim>
 					<dim>384</dim>
 					<dim>1</dim>
@@ -3103,7 +3103,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="173" name="sequential/mobilenetv2_1.00_224/block_10_project/Conv2D" type="Convolution" version="opset1">
+		<layer id="173" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_project/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3128,7 +3128,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="174" name="data_add_1184011845" type="Const" version="opset1">
+		<layer id="174" name="data_add_1237112376" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 96, 1, 1" offset="1201348" size="384"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -3139,7 +3139,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="175" name="sequential/mobilenetv2_1.00_224/block_10_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="175" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3156,7 +3156,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_10_project_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_10_project_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>14</dim>
@@ -3164,10 +3164,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="176" name="sequential/mobilenetv2_1.00_224/block_11_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="176" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="576, 96, 1, 1" offset="1201732" size="221184"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_11_expand/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_expand/Conv2D/ReadVariableOp:0">
 					<dim>576</dim>
 					<dim>96</dim>
 					<dim>1</dim>
@@ -3175,7 +3175,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="177" name="sequential/mobilenetv2_1.00_224/block_11_expand/Conv2D" type="Convolution" version="opset1">
+		<layer id="177" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_expand/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3200,7 +3200,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="178" name="data_add_1184811853" type="Const" version="opset1">
+		<layer id="178" name="data_add_1237912384" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 576, 1, 1" offset="1422916" size="2304"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -3211,7 +3211,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="179" name="sequential/mobilenetv2_1.00_224/block_11_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="179" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3228,7 +3228,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_11_expand_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_expand_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>14</dim>
@@ -3236,7 +3236,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="180" name="sequential/mobilenetv2_1.00_224/block_11_expand_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="180" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_expand_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3247,7 +3247,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_11_expand_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_expand_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>14</dim>
@@ -3255,10 +3255,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="181" name="sequential/mobilenetv2_1.00_224/block_11_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="181" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="576, 1, 1, 3, 3" offset="1425220" size="20736"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_11_depthwise/depthwise/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_depthwise/depthwise/ReadVariableOp:0">
 					<dim>576</dim>
 					<dim>1</dim>
 					<dim>1</dim>
@@ -3267,7 +3267,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="182" name="sequential/mobilenetv2_1.00_224/block_11_depthwise/depthwise" type="GroupConvolution" version="opset1">
+		<layer id="182" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_depthwise/depthwise" type="GroupConvolution" version="opset1">
 			<data strides="1, 1" pads_begin="1, 1" pads_end="1, 1" dilations="1, 1" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3293,7 +3293,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="183" name="data_add_1185611861" type="Const" version="opset1">
+		<layer id="183" name="data_add_1238712392" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 576, 1, 1" offset="1445956" size="2304"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -3304,7 +3304,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="184" name="sequential/mobilenetv2_1.00_224/block_11_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="184" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3321,7 +3321,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_11_depthwise_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_depthwise_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>14</dim>
@@ -3329,7 +3329,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="185" name="sequential/mobilenetv2_1.00_224/block_11_depthwise_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="185" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_depthwise_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3340,7 +3340,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_11_depthwise_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_depthwise_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>14</dim>
@@ -3348,10 +3348,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="186" name="sequential/mobilenetv2_1.00_224/block_11_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="186" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="96, 576, 1, 1" offset="1448260" size="221184"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_11_project/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_project/Conv2D/ReadVariableOp:0">
 					<dim>96</dim>
 					<dim>576</dim>
 					<dim>1</dim>
@@ -3359,7 +3359,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="187" name="sequential/mobilenetv2_1.00_224/block_11_project/Conv2D" type="Convolution" version="opset1">
+		<layer id="187" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_project/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3384,7 +3384,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="188" name="data_add_1186411869" type="Const" version="opset1">
+		<layer id="188" name="data_add_1239512400" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 96, 1, 1" offset="1669444" size="384"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -3395,7 +3395,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="189" name="sequential/mobilenetv2_1.00_224/block_11_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="189" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3412,7 +3412,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_11_project_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_project_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>14</dim>
@@ -3420,7 +3420,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="190" name="sequential/mobilenetv2_1.00_224/block_11_add/add" type="Add" version="opset1">
+		<layer id="190" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_add/add" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3437,7 +3437,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_11_add/add:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_11_add/add:0">
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>14</dim>
@@ -3445,10 +3445,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="191" name="sequential/mobilenetv2_1.00_224/block_12_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="191" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="576, 96, 1, 1" offset="1669828" size="221184"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_12_expand/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_expand/Conv2D/ReadVariableOp:0">
 					<dim>576</dim>
 					<dim>96</dim>
 					<dim>1</dim>
@@ -3456,7 +3456,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="192" name="sequential/mobilenetv2_1.00_224/block_12_expand/Conv2D" type="Convolution" version="opset1">
+		<layer id="192" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_expand/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3481,7 +3481,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="193" name="data_add_1187211877" type="Const" version="opset1">
+		<layer id="193" name="data_add_1240312408" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 576, 1, 1" offset="1891012" size="2304"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -3492,7 +3492,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="194" name="sequential/mobilenetv2_1.00_224/block_12_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="194" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3509,7 +3509,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_12_expand_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_expand_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>14</dim>
@@ -3517,7 +3517,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="195" name="sequential/mobilenetv2_1.00_224/block_12_expand_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="195" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_expand_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3528,7 +3528,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_12_expand_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_expand_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>14</dim>
@@ -3536,10 +3536,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="196" name="sequential/mobilenetv2_1.00_224/block_12_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="196" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="576, 1, 1, 3, 3" offset="1893316" size="20736"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_12_depthwise/depthwise/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_depthwise/depthwise/ReadVariableOp:0">
 					<dim>576</dim>
 					<dim>1</dim>
 					<dim>1</dim>
@@ -3548,7 +3548,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="197" name="sequential/mobilenetv2_1.00_224/block_12_depthwise/depthwise" type="GroupConvolution" version="opset1">
+		<layer id="197" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_depthwise/depthwise" type="GroupConvolution" version="opset1">
 			<data strides="1, 1" pads_begin="1, 1" pads_end="1, 1" dilations="1, 1" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3574,7 +3574,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="198" name="data_add_1188011885" type="Const" version="opset1">
+		<layer id="198" name="data_add_1241112416" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 576, 1, 1" offset="1914052" size="2304"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -3585,7 +3585,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="199" name="sequential/mobilenetv2_1.00_224/block_12_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="199" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3602,7 +3602,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_12_depthwise_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_depthwise_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>14</dim>
@@ -3610,7 +3610,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="200" name="sequential/mobilenetv2_1.00_224/block_12_depthwise_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="200" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_depthwise_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3621,7 +3621,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_12_depthwise_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_depthwise_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>14</dim>
@@ -3629,10 +3629,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="201" name="sequential/mobilenetv2_1.00_224/block_12_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="201" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="96, 576, 1, 1" offset="1916356" size="221184"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_12_project/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_project/Conv2D/ReadVariableOp:0">
 					<dim>96</dim>
 					<dim>576</dim>
 					<dim>1</dim>
@@ -3640,7 +3640,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="202" name="sequential/mobilenetv2_1.00_224/block_12_project/Conv2D" type="Convolution" version="opset1">
+		<layer id="202" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_project/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3665,7 +3665,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="203" name="data_add_1188811893" type="Const" version="opset1">
+		<layer id="203" name="data_add_1241912424" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 96, 1, 1" offset="2137540" size="384"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -3676,7 +3676,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="204" name="sequential/mobilenetv2_1.00_224/block_12_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="204" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3693,7 +3693,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_12_project_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_project_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>14</dim>
@@ -3701,7 +3701,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="205" name="sequential/mobilenetv2_1.00_224/block_12_add/add" type="Add" version="opset1">
+		<layer id="205" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_add/add" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3718,7 +3718,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_12_add/add:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_12_add/add:0">
 					<dim>1</dim>
 					<dim>96</dim>
 					<dim>14</dim>
@@ -3726,10 +3726,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="206" name="sequential/mobilenetv2_1.00_224/block_13_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="206" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="576, 96, 1, 1" offset="2137924" size="221184"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_13_expand/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_expand/Conv2D/ReadVariableOp:0">
 					<dim>576</dim>
 					<dim>96</dim>
 					<dim>1</dim>
@@ -3737,7 +3737,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="207" name="sequential/mobilenetv2_1.00_224/block_13_expand/Conv2D" type="Convolution" version="opset1">
+		<layer id="207" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_expand/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3762,7 +3762,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="208" name="data_add_1189611901" type="Const" version="opset1">
+		<layer id="208" name="data_add_1242712432" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 576, 1, 1" offset="2359108" size="2304"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -3773,7 +3773,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="209" name="sequential/mobilenetv2_1.00_224/block_13_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="209" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3790,7 +3790,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_13_expand_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_expand_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>14</dim>
@@ -3798,7 +3798,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="210" name="sequential/mobilenetv2_1.00_224/block_13_expand_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="210" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_expand_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3809,7 +3809,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_13_expand_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_expand_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>14</dim>
@@ -3817,7 +3817,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="211" name="1568420924" type="Const" version="opset1">
+		<layer id="211" name="1621521326" type="Const" version="opset1">
 			<data element_type="i64" shape="4" offset="13504" size="32"/>
 			<output>
 				<port id="0" precision="I64">
@@ -3825,7 +3825,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="212" name="1569020963" type="Const" version="opset1">
+		<layer id="212" name="1622121662" type="Const" version="opset1">
 			<data element_type="i64" shape="4" offset="13536" size="32"/>
 			<output>
 				<port id="0" precision="I64">
@@ -3833,13 +3833,13 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="213" name="sequential/mobilenetv2_1.00_224/block_13_pad/Pad/pad_value_convert_input_port_0/value" type="Const" version="opset1">
+		<layer id="213" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_pad/Pad/pad_value_convert_input_port_0/value" type="Const" version="opset1">
 			<data element_type="f32" shape="" offset="13568" size="4"/>
 			<output>
 				<port id="0" precision="FP32"/>
 			</output>
 		</layer>
-		<layer id="214" name="sequential/mobilenetv2_1.00_224/block_13_pad/Pad/pad_value_convert" type="ConvertLike" version="opset1">
+		<layer id="214" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_pad/Pad/pad_value_convert" type="ConvertLike" version="opset1">
 			<input>
 				<port id="0" precision="FP32"/>
 				<port id="1" precision="FP32">
@@ -3853,7 +3853,7 @@
 				<port id="2" precision="FP32"/>
 			</output>
 		</layer>
-		<layer id="215" name="sequential/mobilenetv2_1.00_224/block_13_pad/Pad" type="Pad" version="opset1">
+		<layer id="215" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_pad/Pad" type="Pad" version="opset1">
 			<data pad_mode="constant"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3871,7 +3871,7 @@
 				<port id="3" precision="FP32"/>
 			</input>
 			<output>
-				<port id="4" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_13_pad/Pad:0">
+				<port id="4" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_pad/Pad:0">
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>15</dim>
@@ -3879,10 +3879,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="216" name="sequential/mobilenetv2_1.00_224/block_13_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="216" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="576, 1, 1, 3, 3" offset="2361412" size="20736"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_13_depthwise/depthwise/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_depthwise/depthwise/ReadVariableOp:0">
 					<dim>576</dim>
 					<dim>1</dim>
 					<dim>1</dim>
@@ -3891,7 +3891,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="217" name="sequential/mobilenetv2_1.00_224/block_13_depthwise/depthwise" type="GroupConvolution" version="opset1">
+		<layer id="217" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_depthwise/depthwise" type="GroupConvolution" version="opset1">
 			<data strides="2, 2" pads_begin="0, 0" pads_end="0, 0" dilations="1, 1" auto_pad="valid"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3917,7 +3917,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="218" name="data_add_1190411909" type="Const" version="opset1">
+		<layer id="218" name="data_add_1243512440" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 576, 1, 1" offset="2382148" size="2304"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -3928,7 +3928,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="219" name="sequential/mobilenetv2_1.00_224/block_13_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="219" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3945,7 +3945,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_13_depthwise_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_depthwise_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>7</dim>
@@ -3953,7 +3953,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="220" name="sequential/mobilenetv2_1.00_224/block_13_depthwise_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="220" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_depthwise_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -3964,7 +3964,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_13_depthwise_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_depthwise_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>576</dim>
 					<dim>7</dim>
@@ -3972,10 +3972,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="221" name="sequential/mobilenetv2_1.00_224/block_13_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="221" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="160, 576, 1, 1" offset="2384452" size="368640"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_13_project/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_project/Conv2D/ReadVariableOp:0">
 					<dim>160</dim>
 					<dim>576</dim>
 					<dim>1</dim>
@@ -3983,7 +3983,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="222" name="sequential/mobilenetv2_1.00_224/block_13_project/Conv2D" type="Convolution" version="opset1">
+		<layer id="222" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_project/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4008,7 +4008,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="223" name="data_add_1191211917" type="Const" version="opset1">
+		<layer id="223" name="data_add_1244312448" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 160, 1, 1" offset="2753092" size="640"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -4019,7 +4019,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="224" name="sequential/mobilenetv2_1.00_224/block_13_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="224" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4036,7 +4036,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_13_project_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_13_project_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>160</dim>
 					<dim>7</dim>
@@ -4044,10 +4044,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="225" name="sequential/mobilenetv2_1.00_224/block_14_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="225" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="960, 160, 1, 1" offset="2753732" size="614400"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_14_expand/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_expand/Conv2D/ReadVariableOp:0">
 					<dim>960</dim>
 					<dim>160</dim>
 					<dim>1</dim>
@@ -4055,7 +4055,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="226" name="sequential/mobilenetv2_1.00_224/block_14_expand/Conv2D" type="Convolution" version="opset1">
+		<layer id="226" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_expand/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4080,7 +4080,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="227" name="data_add_1192011925" type="Const" version="opset1">
+		<layer id="227" name="data_add_1245112456" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 960, 1, 1" offset="3368132" size="3840"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -4091,7 +4091,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="228" name="sequential/mobilenetv2_1.00_224/block_14_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="228" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4108,7 +4108,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_14_expand_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_expand_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>960</dim>
 					<dim>7</dim>
@@ -4116,7 +4116,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="229" name="sequential/mobilenetv2_1.00_224/block_14_expand_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="229" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_expand_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4127,7 +4127,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_14_expand_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_expand_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>960</dim>
 					<dim>7</dim>
@@ -4135,10 +4135,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="230" name="sequential/mobilenetv2_1.00_224/block_14_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="230" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="960, 1, 1, 3, 3" offset="3371972" size="34560"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_14_depthwise/depthwise/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_depthwise/depthwise/ReadVariableOp:0">
 					<dim>960</dim>
 					<dim>1</dim>
 					<dim>1</dim>
@@ -4147,7 +4147,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="231" name="sequential/mobilenetv2_1.00_224/block_14_depthwise/depthwise" type="GroupConvolution" version="opset1">
+		<layer id="231" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_depthwise/depthwise" type="GroupConvolution" version="opset1">
 			<data strides="1, 1" pads_begin="1, 1" pads_end="1, 1" dilations="1, 1" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4173,7 +4173,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="232" name="data_add_1192811933" type="Const" version="opset1">
+		<layer id="232" name="data_add_1245912464" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 960, 1, 1" offset="3406532" size="3840"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -4184,7 +4184,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="233" name="sequential/mobilenetv2_1.00_224/block_14_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="233" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4201,7 +4201,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_14_depthwise_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_depthwise_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>960</dim>
 					<dim>7</dim>
@@ -4209,7 +4209,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="234" name="sequential/mobilenetv2_1.00_224/block_14_depthwise_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="234" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_depthwise_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4220,7 +4220,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_14_depthwise_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_depthwise_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>960</dim>
 					<dim>7</dim>
@@ -4228,10 +4228,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="235" name="sequential/mobilenetv2_1.00_224/block_14_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="235" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="160, 960, 1, 1" offset="3410372" size="614400"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_14_project/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_project/Conv2D/ReadVariableOp:0">
 					<dim>160</dim>
 					<dim>960</dim>
 					<dim>1</dim>
@@ -4239,7 +4239,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="236" name="sequential/mobilenetv2_1.00_224/block_14_project/Conv2D" type="Convolution" version="opset1">
+		<layer id="236" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_project/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4264,7 +4264,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="237" name="data_add_1193611941" type="Const" version="opset1">
+		<layer id="237" name="data_add_1246712472" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 160, 1, 1" offset="4024772" size="640"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -4275,7 +4275,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="238" name="sequential/mobilenetv2_1.00_224/block_14_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="238" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4292,7 +4292,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_14_project_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_project_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>160</dim>
 					<dim>7</dim>
@@ -4300,7 +4300,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="239" name="sequential/mobilenetv2_1.00_224/block_14_add/add" type="Add" version="opset1">
+		<layer id="239" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_add/add" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4317,7 +4317,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_14_add/add:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_14_add/add:0">
 					<dim>1</dim>
 					<dim>160</dim>
 					<dim>7</dim>
@@ -4325,10 +4325,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="240" name="sequential/mobilenetv2_1.00_224/block_15_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="240" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="960, 160, 1, 1" offset="4025412" size="614400"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_15_expand/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_expand/Conv2D/ReadVariableOp:0">
 					<dim>960</dim>
 					<dim>160</dim>
 					<dim>1</dim>
@@ -4336,7 +4336,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="241" name="sequential/mobilenetv2_1.00_224/block_15_expand/Conv2D" type="Convolution" version="opset1">
+		<layer id="241" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_expand/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4361,7 +4361,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="242" name="data_add_1194411949" type="Const" version="opset1">
+		<layer id="242" name="data_add_1247512480" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 960, 1, 1" offset="4639812" size="3840"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -4372,7 +4372,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="243" name="sequential/mobilenetv2_1.00_224/block_15_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="243" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4389,7 +4389,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_15_expand_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_expand_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>960</dim>
 					<dim>7</dim>
@@ -4397,7 +4397,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="244" name="sequential/mobilenetv2_1.00_224/block_15_expand_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="244" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_expand_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4408,7 +4408,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_15_expand_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_expand_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>960</dim>
 					<dim>7</dim>
@@ -4416,10 +4416,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="245" name="sequential/mobilenetv2_1.00_224/block_15_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="245" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="960, 1, 1, 3, 3" offset="4643652" size="34560"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_15_depthwise/depthwise/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_depthwise/depthwise/ReadVariableOp:0">
 					<dim>960</dim>
 					<dim>1</dim>
 					<dim>1</dim>
@@ -4428,7 +4428,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="246" name="sequential/mobilenetv2_1.00_224/block_15_depthwise/depthwise" type="GroupConvolution" version="opset1">
+		<layer id="246" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_depthwise/depthwise" type="GroupConvolution" version="opset1">
 			<data strides="1, 1" pads_begin="1, 1" pads_end="1, 1" dilations="1, 1" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4454,7 +4454,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="247" name="data_add_1195211957" type="Const" version="opset1">
+		<layer id="247" name="data_add_1248312488" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 960, 1, 1" offset="4678212" size="3840"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -4465,7 +4465,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="248" name="sequential/mobilenetv2_1.00_224/block_15_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="248" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4482,7 +4482,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_15_depthwise_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_depthwise_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>960</dim>
 					<dim>7</dim>
@@ -4490,7 +4490,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="249" name="sequential/mobilenetv2_1.00_224/block_15_depthwise_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="249" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_depthwise_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4501,7 +4501,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_15_depthwise_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_depthwise_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>960</dim>
 					<dim>7</dim>
@@ -4509,10 +4509,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="250" name="sequential/mobilenetv2_1.00_224/block_15_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="250" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="160, 960, 1, 1" offset="4682052" size="614400"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_15_project/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_project/Conv2D/ReadVariableOp:0">
 					<dim>160</dim>
 					<dim>960</dim>
 					<dim>1</dim>
@@ -4520,7 +4520,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="251" name="sequential/mobilenetv2_1.00_224/block_15_project/Conv2D" type="Convolution" version="opset1">
+		<layer id="251" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_project/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4545,7 +4545,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="252" name="data_add_1196011965" type="Const" version="opset1">
+		<layer id="252" name="data_add_1249112496" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 160, 1, 1" offset="5296452" size="640"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -4556,7 +4556,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="253" name="sequential/mobilenetv2_1.00_224/block_15_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="253" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4573,7 +4573,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_15_project_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_project_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>160</dim>
 					<dim>7</dim>
@@ -4581,7 +4581,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="254" name="sequential/mobilenetv2_1.00_224/block_15_add/add" type="Add" version="opset1">
+		<layer id="254" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_add/add" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4598,7 +4598,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_15_add/add:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_15_add/add:0">
 					<dim>1</dim>
 					<dim>160</dim>
 					<dim>7</dim>
@@ -4606,10 +4606,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="255" name="sequential/mobilenetv2_1.00_224/block_16_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="255" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_expand_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="960, 160, 1, 1" offset="5297092" size="614400"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_16_expand/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_expand/Conv2D/ReadVariableOp:0">
 					<dim>960</dim>
 					<dim>160</dim>
 					<dim>1</dim>
@@ -4617,7 +4617,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="256" name="sequential/mobilenetv2_1.00_224/block_16_expand/Conv2D" type="Convolution" version="opset1">
+		<layer id="256" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_expand/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4642,7 +4642,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="257" name="data_add_1196811973" type="Const" version="opset1">
+		<layer id="257" name="data_add_1249912504" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 960, 1, 1" offset="5911492" size="3840"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -4653,7 +4653,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="258" name="sequential/mobilenetv2_1.00_224/block_16_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="258" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_expand_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4670,7 +4670,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_16_expand_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_expand_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>960</dim>
 					<dim>7</dim>
@@ -4678,7 +4678,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="259" name="sequential/mobilenetv2_1.00_224/block_16_expand_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="259" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_expand_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4689,7 +4689,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_16_expand_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_expand_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>960</dim>
 					<dim>7</dim>
@@ -4697,10 +4697,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="260" name="sequential/mobilenetv2_1.00_224/block_16_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="260" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_depthwise_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="960, 1, 1, 3, 3" offset="5915332" size="34560"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_16_depthwise/depthwise/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_depthwise/depthwise/ReadVariableOp:0">
 					<dim>960</dim>
 					<dim>1</dim>
 					<dim>1</dim>
@@ -4709,7 +4709,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="261" name="sequential/mobilenetv2_1.00_224/block_16_depthwise/depthwise" type="GroupConvolution" version="opset1">
+		<layer id="261" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_depthwise/depthwise" type="GroupConvolution" version="opset1">
 			<data strides="1, 1" pads_begin="1, 1" pads_end="1, 1" dilations="1, 1" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4735,7 +4735,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="262" name="data_add_1197611981" type="Const" version="opset1">
+		<layer id="262" name="data_add_1250712512" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 960, 1, 1" offset="5949892" size="3840"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -4746,7 +4746,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="263" name="sequential/mobilenetv2_1.00_224/block_16_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="263" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_depthwise_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4763,7 +4763,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_16_depthwise_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_depthwise_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>960</dim>
 					<dim>7</dim>
@@ -4771,7 +4771,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="264" name="sequential/mobilenetv2_1.00_224/block_16_depthwise_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="264" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_depthwise_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4782,7 +4782,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_16_depthwise_relu/Relu6:0">
+				<port id="1" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_depthwise_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>960</dim>
 					<dim>7</dim>
@@ -4790,10 +4790,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="265" name="sequential/mobilenetv2_1.00_224/block_16_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="265" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_project_BN/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="320, 960, 1, 1" offset="5953732" size="1228800"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_16_project/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_project/Conv2D/ReadVariableOp:0">
 					<dim>320</dim>
 					<dim>960</dim>
 					<dim>1</dim>
@@ -4801,7 +4801,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="266" name="sequential/mobilenetv2_1.00_224/block_16_project/Conv2D" type="Convolution" version="opset1">
+		<layer id="266" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_project/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="same_upper"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4826,7 +4826,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="267" name="data_add_1198411989" type="Const" version="opset1">
+		<layer id="267" name="data_add_1251512520" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 320, 1, 1" offset="7182532" size="1280"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -4837,7 +4837,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="268" name="sequential/mobilenetv2_1.00_224/block_16_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="268" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_project_BN/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4854,7 +4854,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/block_16_project_BN/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/block_16_project_BN/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>320</dim>
 					<dim>7</dim>
@@ -4862,10 +4862,10 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="269" name="sequential/mobilenetv2_1.00_224/Conv_1_bn/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
+		<layer id="269" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/Conv_1_bn/FusedBatchNormV3/mean/Fused_Mul__copy" type="Const" version="opset1">
 			<data element_type="f32" shape="1280, 320, 1, 1" offset="7183812" size="1638400"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/mobilenetv2_1.00_224/Conv_1/Conv2D/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/Conv_1/Conv2D/ReadVariableOp:0">
 					<dim>1280</dim>
 					<dim>320</dim>
 					<dim>1</dim>
@@ -4873,7 +4873,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="270" name="sequential/mobilenetv2_1.00_224/Conv_1/Conv2D" type="Convolution" version="opset1">
+		<layer id="270" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/Conv_1/Conv2D" type="Convolution" version="opset1">
 			<data strides="1, 1" dilations="1, 1" pads_begin="0, 0" pads_end="0, 0" auto_pad="valid"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4898,7 +4898,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="271" name="data_add_1199211997" type="Const" version="opset1">
+		<layer id="271" name="data_add_1252312528" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 1280, 1, 1" offset="8822212" size="5120"/>
 			<output>
 				<port id="0" precision="FP32">
@@ -4909,7 +4909,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="272" name="sequential/mobilenetv2_1.00_224/Conv_1_bn/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
+		<layer id="272" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/Conv_1_bn/FusedBatchNormV3/variance/Fused_Add_" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4926,7 +4926,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/Conv_1_bn/FusedBatchNormV3:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/Conv_1_bn/FusedBatchNormV3:0">
 					<dim>1</dim>
 					<dim>1280</dim>
 					<dim>7</dim>
@@ -4934,7 +4934,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="273" name="sequential/mobilenetv2_1.00_224/out_relu/Relu6" type="Clamp" version="opset1">
+		<layer id="273" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/out_relu/Relu6" type="Clamp" version="opset1">
 			<data min="0" max="6"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -4953,7 +4953,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="274" name="sequential/mobilenetv2_1.00_224/out_relu/Relu6/Transpose/value1505320930" type="Const" version="opset1">
+		<layer id="274" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/out_relu/Relu6/Transpose/value1558421410" type="Const" version="opset1">
 			<data element_type="i64" shape="4" offset="8827332" size="32"/>
 			<output>
 				<port id="0" precision="I64">
@@ -4961,7 +4961,7 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="275" name="sequential/mobilenetv2_1.00_224/out_relu/Relu6/Transpose" type="Transpose" version="opset1">
+		<layer id="275" name="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/out_relu/Relu6/Transpose" type="Transpose" version="opset1">
 			<input>
 				<port id="0" precision="FP32">
 					<dim>1</dim>
@@ -4974,7 +4974,7 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/mobilenetv2_1.00_224/out_relu/Relu6:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/mobilenetv2_1.00_224/out_relu/Relu6:0">
 					<dim>1</dim>
 					<dim>7</dim>
 					<dim>7</dim>
@@ -4982,15 +4982,15 @@
 				</port>
 			</output>
 		</layer>
-		<layer id="276" name="sequential/flatten/Const" type="Const" version="opset1">
+		<layer id="276" name="StatefulPartitionedCall/sequential/flatten/Const" type="Const" version="opset1">
 			<data element_type="i64" shape="2" offset="8827364" size="16"/>
 			<output>
-				<port id="0" precision="I64" names="sequential/flatten/Const:0">
+				<port id="0" precision="I64" names="StatefulPartitionedCall/sequential/flatten/Const:0">
 					<dim>2</dim>
 				</port>
 			</output>
 		</layer>
-		<layer id="277" name="sequential/flatten/Reshape" type="Reshape" version="opset1">
+		<layer id="277" name="StatefulPartitionedCall/sequential/flatten/Reshape" type="Reshape" version="opset1">
 			<data special_zero="false"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -5004,22 +5004,22 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/flatten/Reshape:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/flatten/Reshape:0">
 					<dim>1</dim>
 					<dim>62720</dim>
 				</port>
 			</output>
 		</layer>
-		<layer id="278" name="sequential/dense/MatMul/ReadVariableOp" type="Const" version="opset1">
+		<layer id="278" name="StatefulPartitionedCall/sequential/dense/MatMul/ReadVariableOp" type="Const" version="opset1">
 			<data element_type="f32" shape="60, 62720" offset="8827380" size="15052800"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/dense/MatMul/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/dense/MatMul/ReadVariableOp:0">
 					<dim>60</dim>
 					<dim>62720</dim>
 				</port>
 			</output>
 		</layer>
-		<layer id="279" name="sequential/dense/MatMul" type="MatMul" version="opset1">
+		<layer id="279" name="StatefulPartitionedCall/sequential/dense/MatMul" type="MatMul" version="opset1">
 			<data transpose_a="false" transpose_b="true"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -5032,22 +5032,22 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/dense/MatMul:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/dense/MatMul:0">
 					<dim>1</dim>
 					<dim>60</dim>
 				</port>
 			</output>
 		</layer>
-		<layer id="280" name="sequential/dense/BiasAdd/ReadVariableOp" type="Const" version="opset1">
+		<layer id="280" name="StatefulPartitionedCall/sequential/dense/BiasAdd/ReadVariableOp" type="Const" version="opset1">
 			<data element_type="f32" shape="1, 60" offset="23880180" size="240"/>
 			<output>
-				<port id="0" precision="FP32" names="sequential/dense/BiasAdd/ReadVariableOp:0">
+				<port id="0" precision="FP32" names="StatefulPartitionedCall/sequential/dense/BiasAdd/ReadVariableOp:0">
 					<dim>1</dim>
 					<dim>60</dim>
 				</port>
 			</output>
 		</layer>
-		<layer id="281" name="sequential/dense/BiasAdd/Add" type="Add" version="opset1">
+		<layer id="281" name="StatefulPartitionedCall/sequential/dense/BiasAdd/Add" type="Add" version="opset1">
 			<data auto_broadcast="numpy"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -5060,13 +5060,13 @@
 				</port>
 			</input>
 			<output>
-				<port id="2" precision="FP32" names="sequential/dense/BiasAdd:0">
+				<port id="2" precision="FP32" names="StatefulPartitionedCall/sequential/dense/BiasAdd:0">
 					<dim>1</dim>
 					<dim>60</dim>
 				</port>
 			</output>
 		</layer>
-		<layer id="282" name="sequential/dense/Softmax" type="SoftMax" version="opset1">
+		<layer id="282" name="StatefulPartitionedCall/sequential/dense/Softmax" type="SoftMax" version="opset1">
 			<data axis="1"/>
 			<input>
 				<port id="0" precision="FP32">
@@ -5075,13 +5075,13 @@
 				</port>
 			</input>
 			<output>
-				<port id="1" precision="FP32" names="Identity:0,sequential/dense/Softmax:0">
+				<port id="1" precision="FP32" names="Func/StatefulPartitionedCall/output/_263:0,Identity:0,StatefulPartitionedCall/Identity:0,StatefulPartitionedCall/sequential/dense/Softmax:0">
 					<dim>1</dim>
 					<dim>60</dim>
 				</port>
 			</output>
 		</layer>
-		<layer id="283" name="Identity:0" type="Result" version="opset1">
+		<layer id="283" name="Func/StatefulPartitionedCall/output/_263:0" type="Result" version="opset1">
 			<input>
 				<port id="0" precision="FP32">
 					<dim>1</dim>
@@ -5392,6 +5392,7 @@
 	<meta_data>
 		<MO_version value="2021.4.0-3839-cd81789d294-releases/2021/4"/>
 		<cli_parameters>
+			<batch value="1"/>
 			<data_type value="float"/>
 			<disable_nhwc_to_nchw value="False"/>
 			<disable_resnet_optimization value="False"/>
@@ -5401,9 +5402,7 @@
 			<framework value="tf"/>
 			<freeze_placeholder_with_value value="{}"/>
 			<generate_deprecated_IR_V7 value="False"/>
-			<input_model value="DIR\mobilenetv2.pb"/>
 			<input_model_is_text value="False"/>
-			<input_shape value="(1,224,224,3)"/>
 			<keep_shape_ops value="True"/>
 			<legacy_ir_generation value="False"/>
 			<log_level value="ERROR"/>
@@ -5412,15 +5411,15 @@
 			<model_name value="mobilenetv2"/>
 			<output_dir value="DIR"/>
 			<placeholder_data_types value="{}"/>
-			<placeholder_shapes value="[  1 224 224   3]"/>
 			<progress value="False"/>
 			<reverse_input_channels value="False"/>
+			<saved_model_dir value="DIR"/>
 			<scale_values value="()"/>
 			<silent value="False"/>
 			<static_shape value="False"/>
 			<stream_output value="False"/>
 			<transform value=""/>
-			<unset unset_cli_parameters="batch, disable_fusing, disable_gfusing, finegrain_fusing, input, input_checkpoint, input_meta_graph, move_to_preprocess, output, saved_model_dir, saved_model_tags, scale, tensorboard_logdir, tensorflow_custom_layer_libraries, tensorflow_custom_operations_config_update, tensorflow_object_detection_api_pipeline_config, tensorflow_use_custom_operations_config, transformations_config"/>
+			<unset unset_cli_parameters="disable_fusing, disable_gfusing, finegrain_fusing, input, input_checkpoint, input_meta_graph, input_model, input_shape, move_to_preprocess, output, placeholder_shapes, saved_model_tags, scale, tensorboard_logdir, tensorflow_custom_layer_libraries, tensorflow_custom_operations_config_update, tensorflow_object_detection_api_pipeline_config, tensorflow_use_custom_operations_config, transformations_config"/>
 		</cli_parameters>
 	</meta_data>
 </net>
